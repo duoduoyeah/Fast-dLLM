@@ -120,7 +120,7 @@ def generate_with_prefix_cache(model, prompt, steps=128, gen_length=128, block_l
     '''
     x = torch.full((prompt.shape[0], prompt.shape[1] + gen_length), mask_id, dtype=torch.long).to(model.device)
     x[:, :prompt.shape[1]] = prompt.clone()
-
+ 
     assert gen_length % block_length == 0
     num_blocks = gen_length // block_length
 
